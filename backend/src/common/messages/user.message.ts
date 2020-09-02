@@ -1,0 +1,1 @@
+export const EMAIL_ALREADY_EXISTS = "Ese email ya existe";

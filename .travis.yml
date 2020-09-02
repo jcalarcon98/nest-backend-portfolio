@@ -1,0 +1,47 @@
+language: generic
+dist: trusty
+services:
+  - docker
+
+addons:
+  apt:
+    update: true
+
+branches:
+  only:
+    - master
+    - develop
+
+before_install:
+  #Temporaly images for Testing
+  - docker build -t jcalarcon/backend -f ./backend/Dockerfile.dev ./backend
+  - docker build -t jcalarcon/frontend -f ./frontend/test.Dockerfile ./frontend
+
+before_script:
+  #PACKAGES NEEDED FOR SSH CONNECTION
+  - sudo apt-get install sshpass
+  # DISABLE HOST CHECKING IN SSH CONNECTION
+  - echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+script:
+  - docker run jcalarcon/backend npm test
+  - docker run jcalarcon/frontend npm test -- --watch=false
+
+after_success:
+  - docker build -t jcalarcon/frontend-portafolio ./frontend
+  - docker build -t jcalarcon/backend-portafolio ./backend
+  - docker build -t jcalarcon/nginx-server ./nginx
+  #LOGIN to DOCKER CLI.
+  - echo  "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #PUSH THESE IMAGES TO DOCKERHUB
+  - docker push jcalarcon/nginx-server
+  - docker push jcalarcon/backend-portafolio
+  - docker push jcalarcon/frontend-portafolio
+
+#DEPLY TO VPS
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: sshpass -p "$VPS_PASSWORD" ssh "$VPS_USER"@"$VPS_IP" "cd $VPS_DOCKER_PATH && docker-compose down && docker system prune -a --force && docker-compose up --build -d"
+  on:
+    branch: develop

@@ -1,0 +1,1 @@
+export const NOT_FOUND_SERVICE = "No existe el servicio";

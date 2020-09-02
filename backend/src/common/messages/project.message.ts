@@ -1,0 +1,1 @@
+export const NOT_FOUND_PROJECT = "No existe el proyecto";

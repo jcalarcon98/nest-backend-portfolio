@@ -1,0 +1,1 @@
+export const NOT_FOUND_EDUCATION = "No existe el grado de educación";

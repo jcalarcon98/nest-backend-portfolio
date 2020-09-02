@@ -1,0 +1,1 @@
+export const NOT_FOUND_PHONE = "No existe ese número telefónico";

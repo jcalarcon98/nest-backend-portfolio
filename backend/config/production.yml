@@ -1,0 +1,12 @@
+database:
+  type: postgres
+  host: db-postgresql-nyc1-82879-do-user-7457660-0.a.db.ondigitalocean.com
+  port: 25061
+  username: jcaopsql
+  password:  wnxlah1j82942gjy
+  name: Portafolio
+  synchronize: true
+
+
+host:
+  name: 'http://www.jenikaec.com'

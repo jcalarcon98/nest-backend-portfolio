@@ -1,0 +1,1 @@
+export const NOT_FOUND_SOCIAL = "No existe la red Social";

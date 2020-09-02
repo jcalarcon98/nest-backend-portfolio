@@ -1,0 +1,1 @@
+export const NOT_FOUND_SKILL = "No existe la habilidad";

@@ -1,0 +1,15 @@
+database:
+  type: postgres
+  host: postgres
+  port: 5432
+  username: postgres
+  password: postgres
+  name: postgres
+  synchronize: true
+
+server:
+  port: 3000
+
+jwt:
+  expiresIn: 3600
+  secret: 'topSecret51'
