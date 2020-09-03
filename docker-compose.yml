@@ -32,10 +32,21 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
+  manager:
+    container_name: manager
+    build:
+      context: ./manager
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./manager:/app
+      - /app/node_modules
+    ports:
+      - "4300:4300"
   nginx:
     depends_on:
       - backend
       - frontend
+      - manager
     container_name: nginx
     restart: always
     build:
