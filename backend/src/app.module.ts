@@ -26,7 +26,10 @@ import { PhoneModule } from './modules/phone/phone.module';
       introspection: true,  
       playground: true,
       context: ({ req }) => ({ req }),
-      
+      cors: {
+        credentials: true,
+        origin: true
+      }      
     }),
     TypeOrmModule.forRoot(typeOrmConfig),
     AuthModule,

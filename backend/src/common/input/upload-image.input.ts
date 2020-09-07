@@ -5,9 +5,9 @@ import { IsNotEmpty, IsNumber } from "class-validator";
 export class UpdateImageInput{
 
     @IsNotEmpty({
-        message:  'El identificador de la Imagen no es el correcto'
+        message:  'The image ID is necessary'
     })
-    @IsNumber({maxDecimalPlaces : 0}, {message: 'Es necesario un numero entero'})
+    @IsNumber({maxDecimalPlaces : 0}, {message: 'Integer number is necessary'})
     @Field()
     idImage : number;
 }

@@ -1,11 +1,11 @@
 import { ISendEmailStrategy } from "../strategies/send-email/send-email.strategy";
-import { TemplateUtils } from '../../utils/template.utils';
-import { RESET_PASSWORD_SUBJECT, RESET_PASSWORD, RESET_PASSWORD_BUTTON } from '../messages/email.message';
-import { v4 } from 'uuid';
 import { redis } from './../../config/redis.config';
-
-import * as config from 'config';
+import { RESET_PASSWORD_SUBJECT, RESET_PASSWORD, RESET_PASSWORD_BUTTON } from '../messages/email.message';
+import { TemplateUtils } from '../../utils/template.utils';
 import { User } from '../../modules/user/user.entity';
+import { v4 } from 'uuid';
+import * as config from 'config';
+
 const hostConfig = process.env.JENIKA_HOST || config.get('host').name;
 
 export class ResetPasswordEmail implements ISendEmailStrategy{
@@ -46,9 +46,8 @@ export class ResetPasswordEmail implements ISendEmailStrategy{
     
     const id = v4();  
     
-    /**
-     * Expira el código en 1 Hora.
-     */
+    
+    /* Expira código en una hora */
     await redis.set(id, this.id, "ex", 60*60);
 
     return `${hostConfig}/api/user/reset/${id}`

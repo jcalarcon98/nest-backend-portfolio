@@ -11,19 +11,19 @@ import { ProjectStatusEnum } from '../../../common/enums/project-status.enum';
 export class CreateOrUpdateProjectInput{
 
     @IsNotEmpty({
-      message: "El título del proyecto no puede estar vacio"
+      message: "Project title can not be empty"
     })
     @Field()
     title: string
 
     @IsNotEmpty({
-      message : "La descripción no puede estar vacia"
+      message : "Project description can not be empty"
     })
     @Field()
     description : string;
 
     @IsUrl({}, {
-      message: 'Verifica que la URL se valida'
+      message: 'Verify that the URL is valid'
     })
     @Field({
       nullable: true
@@ -31,10 +31,10 @@ export class CreateOrUpdateProjectInput{
     url : string;
 
     @IsNotEmpty({
-      message:  "El estado del proyecto es requerido"
+      message:  "Proyect status is required"
     })
     @IsIn([ProjectStatusEnum.FINISHED, ProjectStatusEnum.IN_PROGRESS], {
-      message: "El estado del proyecto es incorrecto"
+      message: "Project status is incorrect"
     })
     @Field()
     status : ProjectStatusEnum

@@ -1,0 +1,16 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-social-network',
+  templateUrl: './social-network.component.html',
+  styles: [
+  ]
+})
+export class SocialNetworkComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

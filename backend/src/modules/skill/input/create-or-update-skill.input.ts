@@ -6,30 +6,30 @@ import { IsNotEmpty, IsIn } from 'class-validator';
 export class CreateOrUpdateSkillInput{
 
   @IsNotEmpty({
-    message: 'El nombre de la habilidad no puede estar vacio'
+    message: 'Skill name can not be empty'
   })
   @Field({
-    description: 'Nombre de la habilidad'
+    description: 'Skill name'
   })
   name : string;
 
   @IsNotEmpty({
-    message: 'El nivel de la habilidad no puede estar vacio'
+    message: 'Skill level can not be empty'
   })
   @IsIn(
     [SkillLevelsEnum.HIGH, SkillLevelsEnum.LOW, SkillLevelsEnum.MEDIUM],
-    { message: 'El tipo debería ser: high, medium, low'}
+    { message: 'The type should be: high, medium, low'}
   )
   @Field({
-    description: 'Nivel de la habilidad'
+    description: 'SKill level'
   })
   level : SkillLevelsEnum;
 
   @IsNotEmpty({
-    message: 'La descripción de la habilidad no puede estar vacia'
+    message: 'Skill description can not be empty'
   })
   @Field({
-    description: 'Descripción de la habilidad'
+    description: 'Skill description'
   })
   description : string;
 

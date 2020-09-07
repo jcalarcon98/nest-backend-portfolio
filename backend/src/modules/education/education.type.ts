@@ -5,27 +5,27 @@ import { ObjectType, Field } from '@nestjs/graphql';
 export class EducationType{
 
   @Field({
-    description:  'Nombre de Institución'
+    description:  'Institution Name'
   })
   institution : string;
 
   @Field({
-    description: 'Título obtenido'
+    description: 'Degree obtained'
   })
   title : string;
   
   @Field({
-    description: 'Año de Inicio del estudio'
+    description: 'Year Study Started'
   })
   initYear : number;
 
   @Field({
-    description: 'Año de Finalización del estudio'
+    description: 'End study year'
   })
   endYear : number;
 
   @Field({
-    description: 'Descripción opcional del periodo de estudio',
+    description: 'Optional description about study period',
     nullable: true
   })
   description : string;

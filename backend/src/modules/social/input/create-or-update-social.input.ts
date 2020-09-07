@@ -5,19 +5,19 @@ import { IsNotEmpty, IsUrl, Length } from 'class-validator';
 export class CreateOrUpdateSocialInput{
   
   @IsNotEmpty({
-    message: "El nombre de la Red social es requerido"
+    message: "Social network name is required"
   })
   @Length(2, 50, {
-    message: "El nombre de la red social tiene que tener entre 2 y 50 caracteres"
+    message: "Social network name must be between 2 and 50 characters"
   })
-  @Field({description: "Nombre de la Red Social"})
+  @Field({description: "Social network"})
   name : string;
 
   @IsNotEmpty({
-    message: "La url de la red social es requerida"
+    message: "Social network URL is required"
   })
   @IsUrl()
-  @Field({description: "Url de la Red social"})
+  @Field({description: "Social Network is required"})
   url : string;
 
 }

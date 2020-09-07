@@ -5,39 +5,39 @@ import { IsNotEmpty } from 'class-validator';
 export class CreateOrUpdateExperienceInput{
 
   @IsNotEmpty({
-    message: 'El nombre de la institución es obligatorio'
+    message: 'Institution name is required'
   })
   @Field({
-    description:  'Nombre de Institución'
+    description:  'Institution name'
   })
   institution : string;
 
   @IsNotEmpty({
-    message: 'El cargo es obligatorio'
+    message: 'The position is required'
   })
   @Field({
-    description: 'Cargo que desempeño'
+    description: 'Position held'
   })
   role : string;
   
   @IsNotEmpty({
-    message: 'El año de inicio del cargo es obligatorio'
+    message: `Position's start year is required`
   })
   @Field({
-    description: 'Año de Inicio del cargo'
+    description: `Position's start year` 
   })
   initYear : number;
 
   @IsNotEmpty({
-    message: 'El año de finalización del cargo es obligatorio'
+    message: `Position's end year is required`
   })
   @Field({
-    description: 'Año de Finalización del cargo'
+    description: `Position's end year`
   })
   endYear : number;
   
   @Field({
-    description: 'escripción opcional del cargo que cumplió',
+    description: `Optional description of the position you held`,
     nullable: true
   })
   description : string;

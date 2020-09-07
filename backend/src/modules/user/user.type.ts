@@ -22,38 +22,38 @@ export class UserType {
   @Field()
   id: number;
 
-  @Field({ description: 'Nombres completos de la Persona' })
+  @Field({ description: 'Person names' })
   firstNames: string;
 
-  @Field({ description: 'Apellidos completos de la Persona' })
+  @Field({ description: 'Person lastnames' })
   lastNames: string;
 
-  @Field({ description: 'Descripción acerca de la Persona' })
+  @Field({ description: 'Person description' })
   description: string;
 
-  @Field({ description: 'Email de acceso de la Persona' })
+  @Field({ description: 'Person email' })
   email: string;
 
-  @Field({ description: 'País de Residencia de la Persona' })
+  @Field({ description: 'Person country' })
   country: string;
 
-  @Field({ description: 'Ciudad de Residencia de la Persona' })
+  @Field({ description: 'Person city' })
   city: string;
 
   @Field({
-    description: 'Dirección de la Persona',
+    description: 'Person address',
     nullable: true,
   })
   address: string;
 
   @Field({
-    description: 'Imagen de Perfil de la Persona',
+    description: 'Person image',
     nullable: true,
   })
   image: string;
 
   @Field({
-    description: 'Estado de confirmación del correo electrónico del usuario'
+    description: 'Person email confirmation status'
   })
   confirmed: string;
 

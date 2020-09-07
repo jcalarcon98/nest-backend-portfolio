@@ -30,7 +30,7 @@ export class AuthService {
       authCredentialsInput,
     );
     if (!user) {
-      throw new UnauthorizedException('Credenciales no válidas');
+      throw new UnauthorizedException('Invalid Credentials');
     }
 
     return await this.getFullUser(user);

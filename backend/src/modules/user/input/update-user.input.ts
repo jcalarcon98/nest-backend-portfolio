@@ -7,4 +7,4 @@ import { CreateUserInput } from './create-user.input';
  * password fields.
  */
 @InputType()
-export class UpdateUserInput extends OmitType(CreateUserInput, ['email', 'password']) {}
+export class UpdateUserInput extends OmitType(CreateUserInput, ['email', 'password']) {}   

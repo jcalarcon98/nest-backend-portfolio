@@ -8,25 +8,24 @@ export class GqlAuthGuard extends AuthGuard(['token', 'jwt']){
   getRequest(context: ExecutionContext) {
     const ctx = GqlExecutionContext.create(context);
     
-    const operation =  ctx.getInfo().parentType.name;
+    const currentOperation =  ctx.getInfo().parentType.name;
     const isAccesssTokenAuthGuard = ctx.getContext().req.headers.apitoken ? true : false;
 
-    if(isAccesssTokenAuthGuard && operation !== 'Query'){
-      throw new UnauthorizedException('No tiene permitido realizar mutations con el API TOKEN');
+    if(isAccesssTokenAuthGuard && currentOperation !== 'Query'){
+      throw new UnauthorizedException('You are not allowed to perform mutations with only API TOKEN');
     }
 
     return ctx.getContext().req;
   }
 
-  //TODO change message
   handleRequest(err, user, info, context) {
 
     if (err || !user ) {
-      throw err || new UnauthorizedException("Operación no permitida - AUTHGUARD");
+      throw err || new UnauthorizedException("Operation not allowed");
     }
 
     if(!user.confirmed){
-      throw new UnauthorizedException("Por favor verifique su correo electrónico para realizar peticiones");
+      throw new UnauthorizedException("Please, verify your email");
     }
 
     return user;    

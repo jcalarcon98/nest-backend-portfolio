@@ -3,13 +3,13 @@ import { ObjectType, Field } from "@nestjs/graphql";
 @ObjectType('Social')
 export class SocialType{
 
-  @Field({description: "Nombre de la Red Social"})
+  @Field({description: "Social Network"})
   name : string;
 
-  @Field({description: "Url de la Red social"})
+  @Field({description: "Social Network URL"})
   url : string;
 
-  @Field({description: "Url de la imagen de la red social"})
+  @Field({description: "Social Network image URL"})
   image : string;
 
 }

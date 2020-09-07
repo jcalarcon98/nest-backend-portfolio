@@ -2,7 +2,6 @@ import {
   EntitySubscriberInterface,
   InsertEvent,
   EventSubscriber,
-  UpdateEvent,
 } from 'typeorm';
 
 import { User } from '../../modules/user/user.entity';

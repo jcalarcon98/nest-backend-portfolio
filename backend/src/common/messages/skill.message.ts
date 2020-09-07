@@ -1,1 +1,1 @@
-export const NOT_FOUND_SKILL = "No existe la habilidad";
+export const NOT_FOUND_SKILL = "Skill does not exist";

@@ -4,27 +4,27 @@ import { ObjectType, Field } from '@nestjs/graphql';
 export class ExperienceType{
 
   @Field({
-    description:  'Nombre de Institución'
+    description:  'Institution Name'
   })
   institution : string;
 
   @Field({
-    description: 'Cargo que desempeño'
+    description: 'Position held'
   })
   role : string;
   
   @Field({
-    description: 'Año de Inicio del cargo'
+    description: `Position's start year`
   })
   initYear : number;
 
   @Field({
-    description: 'Año de Finalización del cargo'
+    description:  `Position's end year`
   })
   endYear : number;
 
   @Field({
-    description: 'Descripción opcional del cargo que cumplió',
+    description: 'Optional description of the position you held',
     nullable: true
   })
   description : string;

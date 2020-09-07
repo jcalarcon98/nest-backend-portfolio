@@ -6,15 +6,15 @@ import { IsNotEmpty } from 'class-validator';
 export class CreaterOrUpdateServiceInput{
 
   @IsNotEmpty({
-    message: 'Es necesario el titulo del servicio'
+    message: 'Service title is required'
   })
-  @Field({ description: 'Título del Servicio' })
+  @Field({ description: 'Service title' })
   title : string;
 
   @IsNotEmpty({
-    message: 'Es necesaria la descripción del servicio'
+    message: 'Service description is required'
   })
-  @Field({description : 'Descripción del servicio'})
+  @Field({description : 'Service description'})
   description : string;
 
 }

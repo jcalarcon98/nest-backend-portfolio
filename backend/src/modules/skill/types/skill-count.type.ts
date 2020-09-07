@@ -11,7 +11,7 @@ export class SkillCountType {
   @Field(type => [SkillType])
   list: Skill[];
 
-  @Field({ description: 'Numero de Habilidades'})
+  @Field({ description: 'Number of skills'})
   count: number;
 
 }

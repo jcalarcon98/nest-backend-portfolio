@@ -1,3 +1,4 @@
+// TODO change this messages
 export const CONFIRMATION_EMAIL = "estamos gustosos de recibirte, por favor verifica tu correo electrónico en el siguiente enlace.";
 export const CONFIRMATION_EMAIL_BUTTON = "Verificar Correo Electrónico";
 export const CONFIRMATION_EMAIL_SUBJECT = "Confirmación de correo electrónico JENIKA - PORTAFOLIO";

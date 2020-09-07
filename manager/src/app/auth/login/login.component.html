@@ -1,0 +1,33 @@
+<!-- Sign up form -->
+<section class="signup">
+  <div class="container">
+      <div class="signup-content">
+          <div class="signup-form">
+              <h2 class="form-title">Log in</h2>
+              <form method="POST" class="register-form" id="register-form">
+                  <div class="form-group">
+                      <label for="name"><i class="mdi mdi-human-greeting"></i></label>
+                      <input type="text" name="name" id="name" placeholder="First Names"/>
+                  </div>
+                  <div class="form-group">
+                      <label for="email"><i class="mdi mdi-email-outline"></i></label>
+                      <input type="email" name="email" id="email" placeholder="Your Email"/>
+                  </div>
+                  <div class="form-group">
+                      <label for="pass"><i class="mdi mdi-account-key"></i></label>
+                      <input type="password" name="pass" id="pass" placeholder="Password"/>
+                  </div>
+                  <div class="form-group">
+                      <label for="re-pass"><i class="mdi mdi-repeat"></i></label>
+                      <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                  </div>
+                  <button type="button" type="submit" class="btn btn-info btn-block">Log in</button>
+              </form>
+          </div>
+          <div class="signup-image">
+              <figure><img src="./assets/images/signup-image.jpg" alt="sing up image"></figure>
+              <a routerLink="/register" class="signup-image-link">Don't have an account?</a>
+          </div>
+      </div>
+  </div>
+</section>

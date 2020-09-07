@@ -1,43 +1,43 @@
-import { ObjectType, Field, InputType } from '@nestjs/graphql';
+import { Field, InputType } from '@nestjs/graphql';
 import { IsNotEmpty } from 'class-validator';
 
 @InputType()
 export class CreateOrUpdateEducationInput{
 
   @IsNotEmpty({
-    message: 'El nombre de la institución es obligatorio'
+    message: 'Institution name is required'
   })
   @Field({
-    description:  'Nombre de Institución'
+    description:  'Institution Name'
   })
   institution : string;
 
   @IsNotEmpty({
-    message: 'El título obtenido es obligatorio'
+    message: 'Degree obtained is required'
   })
   @Field({
-    description: 'Título obtenido'
+    description: 'Degree obtained'
   })
   title : string;
   
   @IsNotEmpty({
-    message: 'El año de inicio del estudio es obligatorio'
+    message: 'Start year of the study is mandatory'
   })
   @Field({
-    description: 'Año de Inicio del estudio'
+    description: 'Year Study Started'
   })
   initYear : number;
 
   @IsNotEmpty({
-    message: 'El año de finalización del estudio es obligatorio'
+    message: 'End year of the study is required'
   })
   @Field({
-    description: 'Año de Finalización del estudio'
+    description: 'End study year'
   })
   endYear : number;
   
   @Field({
-    description: 'Descripción opcional del periodo de estudio',
+    description: 'Optional description about study period',
     nullable: true
   })
   description : string;

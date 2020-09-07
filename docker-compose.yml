@@ -23,7 +23,15 @@ services:
       - ./backend:/app
       - /app/node_modules
     environment: 
-      - NODE_ENV=development
+      - NODE_ENV=${NODE_ENV}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - AUTH_TYPE=${AUTH_TYPE}
+      - EMAIL_ACCOUNT=${EMAIL_ACCOUNT}
+      - EMAIL_CLIENT_ID=${EMAIL_CLIENT_ID}
+      - EMAIL_CLIENT_SECRET=${EMAIL_CLIENT_SECRET}
+      - EMAIL_REFRESH_TOKEN=${EMAIL_REFRESH_TOKEN}
+      - EMAIL_ACCESS_TOKEN=${EMAIL_ACCESS_TOKEN}
   frontend:
     container_name: frontend
     build:

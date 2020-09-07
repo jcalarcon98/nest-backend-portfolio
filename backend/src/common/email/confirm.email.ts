@@ -1,13 +1,13 @@
-import { redis } from './../../config/redis.config';
 import { CONFIRMATION_EMAIL_SUBJECT } from './../messages/email.message';
-import { TemplateUtils } from '../../utils/template.utils';
-import { v4 } from 'uuid';
-import * as config from 'config';
-import { User } from '../../modules/user/user.entity';
 import { CONFIRMATION_EMAIL_BUTTON, CONFIRMATION_EMAIL } from '../messages/email.message';
 import { ISendEmailStrategy } from '../strategies/send-email/send-email.strategy';
-const hostConfig = process.env.JENIKA_HOST || config.get('host').name;
+import { redis } from './../../config/redis.config';
+import { TemplateUtils } from '../../utils/template.utils';
+import { User } from '../../modules/user/user.entity';
+import { v4 } from 'uuid';
+import * as config from 'config';
 
+const hostConfig = process.env.JENIKA_HOST || config.get('host').name;
 export class ConfirmEmail implements ISendEmailStrategy{
   
   name : string;

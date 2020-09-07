@@ -1,1 +1,1 @@
-export const NOT_FOUND_SOCIAL = "No existe la red Social";
+export const NOT_FOUND_SOCIAL = "Social Network does not exist";

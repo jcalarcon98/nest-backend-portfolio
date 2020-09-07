@@ -1,0 +1,63 @@
+<!-- Sign up form -->
+<section class="signup">
+  <div class="container">
+      <div class="signup-content">
+          <div class="signup-form">
+              <h2 class="form-title">Register</h2>
+              <form
+                (ngSubmit)="createUser()"
+                class="register-form"
+                [formGroup]="registerForm"
+                id="register-form">
+                  <div class="form-group">
+                      <label for="name"><i class="mdi mdi-comment-account"></i></label>
+                      <input type="text" name="firstNames" id="firstNames" placeholder="First Names" formControlName="firstNames"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="name"><i class="mdi mdi-comment-account-outline"></i></label>
+                    <input type="text" name="lastNames" id="lastNames" placeholder="Last Names" formControlName="lastNames"/>
+                  </div>
+                  <div class="form-group">
+                      <label for="email"><i class="mdi mdi-email-outline"></i></label>
+                      <input type="email" name="email" id="email" placeholder="Your Email" formControlName="email"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="name"><i class="mdi mdi-google-maps"></i></label>
+                    <input type="text" name="country" id="country" placeholder="Country"formControlName="country"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="name"><i class="mdi mdi-home-map-marker"></i></label>
+                    <input type="text" name="city" id="city" placeholder="City"formControlName="city"/>
+                  </div>
+                  <div class="form-group">
+                      <label for="pass"><i class="mdi mdi-key"></i></label>
+                      <input type="password" name="password" id="password" placeholder="Password" formControlName="password"/>
+                  </div>
+                  <div class="form-group">
+                      <label for="re-pass"><i class="mdi mdi-repeat"></i></label>
+                      <input type="password" name="secondPassword" id="secondPassword" placeholder="Repeat your password" formControlName="secondPassword"/>
+                  </div>
+                  <button type="button" type="submit" class="btn btn-info btn-block">Register</button>
+
+                  <div class="row">
+                    <div class="col text-danger">
+                      <b>OJITO</b>
+                      <p *ngIf="invalidInput('firstNames')">The firstNames are necessary</p>
+                      <p *ngIf="invalidInput('lastNames')">The lastNames are necessary</p>
+                      <p *ngIf="invalidInput('email')">The email is necessary</p>
+                      <p *ngIf="invalidInput('country')">The country is necessary</p>
+                      <p *ngIf="invalidInput('city')">The city is necessary</p>
+                      <p *ngIf="invalidInput('password')">The password is necessary</p>
+                    </div>
+                  </div>
+              </form>
+          </div>
+          <div class="signup-image">
+            <figure><img src="./assets/images/signup-image.jpg" alt="sing up image"></figure>
+            <a routerLink="/login" class="signup-image-link">I am already member</a>
+          </div>
+      </div>
+  </div>
+</section>
+
+

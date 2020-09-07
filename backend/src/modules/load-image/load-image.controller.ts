@@ -18,7 +18,7 @@ export class LoadImageController {
     if (existsSync(pathImage)) {
       res.sendFile(pathImage);
     } else {
-      throw new NotFoundException('No existe esta imagen');
+      throw new NotFoundException('Image does not exist');
     }
   }
 }

@@ -1,14 +1,14 @@
 import { InputType, Field } from '@nestjs/graphql';
-import { IsNumber, IsPositive, IsInt, Min } from 'class-validator';
+import { IsPositive, IsInt, Min } from 'class-validator';
 
 @InputType()
 export class PaginationInput {
 
     @IsInt({
-        message: "Solo se aceptan numeros"
+        message: "Only numbers are accepted"
     })
     @Min(0, {
-        message: "Solo se aceptan numeros enteros positivos"
+        message: "Only positive numbers are accepted"
     })
     @Field({
         nullable: true
@@ -17,10 +17,10 @@ export class PaginationInput {
 
 
     @IsPositive({
-        message: "Solo se aceptan numeros positivos"
+        message: "Only positive numbers are accepted"
     })
     @IsInt({
-        message: "Solo se aceptan numeros"
+        message: "Only numbers are accepted"
     })
     @Field({
         nullable: true

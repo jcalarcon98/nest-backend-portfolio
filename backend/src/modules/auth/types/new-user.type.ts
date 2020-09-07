@@ -10,7 +10,7 @@ import { UserType } from '../../user/user.type';
 export class NewUserType extends UserType{
 
     @Field({
-        description: "Token de acceso de la persona al registrarse"
+        description: "Person access token after register"
     })
     accessToken : string;
 }

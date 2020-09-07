@@ -14,7 +14,7 @@ import { IUpdateStrategy } from '../../common/strategies/update-image/upload-ima
 
 @Injectable()
 export class ProjectService implements IUpdateStrategy {
- 
+
   constructor(
     @InjectRepository(ProjectRepository)
     private projectRepository: ProjectRepository,

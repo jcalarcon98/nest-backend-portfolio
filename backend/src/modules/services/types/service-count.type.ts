@@ -9,7 +9,7 @@ export class ServiceCountType {
   @Field(type => [ServiceType])
   list: Service[];
 
-  @Field({ description: 'Numero de servicios' })
+  @Field({ description: 'Number of services' })
   count: number;
 
 }

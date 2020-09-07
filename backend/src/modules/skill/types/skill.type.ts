@@ -1,32 +1,31 @@
 import { ObjectType, Field } from "@nestjs/graphql";
 import { SkillLevelsEnum } from '../../../common/enums/skill-levels.enum';
 
-
 @ObjectType('Skill')
 export class SkillType{
 
   @Field({
-    description:  'Identificador de la habilidad'
+    description:  'Skill identifier'
   })
   id:  number;
 
   @Field({
-    description: 'Nombre de la habilidad'
+    description: 'Skill name'
   })
   name : string;
 
   @Field({
-    description: 'Nivel de la habilidad'
+    description: 'SKill level'
   })
   level : SkillLevelsEnum;
 
   @Field({
-    description: 'Descripción de la habilidad'
+    description: 'Skill description'
   })
   description : string;
 
   @Field({
-    description: 'Imagen referencial de la habilidad'
+    description: 'Skill reference image'
   })
   image : string;
 }

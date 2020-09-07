@@ -1,5 +1,5 @@
-import { User } from '../../../modules/user/user.entity';
 import { UploadImageTypes } from '../../enums/upload-image-types.enum';
+import { User } from '../../../modules/user/user.entity';
 
 export interface IUpdateStrategy{
 
@@ -8,8 +8,6 @@ export interface IUpdateStrategy{
     imageName: string,  
     type : UploadImageTypes,
     user : User  
-  ) : Promise<boolean>;  
-
-  
+  ) : Promise<boolean>; 
 
 }   

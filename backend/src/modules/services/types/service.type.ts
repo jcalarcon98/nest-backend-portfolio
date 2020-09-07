@@ -6,13 +6,13 @@ export class ServiceType{
   @Field()
   id:  number;
 
-  @Field({ description: 'Título del Servicio' })
+  @Field({ description: 'Service title' })
   title : string;
 
-  @Field({description : 'Descripción del servicio'})
+  @Field({description : 'Service description'})
   description : string;
 
-  @Field({description: 'Imagen referencial del servicio'})
+  @Field({description: 'Service reference image'})
   image : string;
 
 

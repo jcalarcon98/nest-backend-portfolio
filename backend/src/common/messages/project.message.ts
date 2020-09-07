@@ -1,1 +1,1 @@
-export const NOT_FOUND_PROJECT = "No existe el proyecto";
+export const NOT_FOUND_PROJECT = "Project does not exist";

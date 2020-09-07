@@ -1,13 +1,13 @@
 import { InputType, Field } from "@nestjs/graphql";
-import { IsPhoneNumber, IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 
 @InputType()
 export class CreateOrUpdatePhoneInput{
 
   @IsNotEmpty({
-    message: "Se debe proporcionar el número telefónico"
+    message: "Phone number is required"
   })
-  @Field({description: "Número Telefónico"})
+  @Field({description: "Phone number"})
   number : string;
 
 }

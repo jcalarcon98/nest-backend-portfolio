@@ -1,1 +1,1 @@
-export const NOT_FOUND_EXPERIENCE = "No existe la experiencia laboral";
+export const NOT_FOUND_EXPERIENCE = "Work experience does not exist";

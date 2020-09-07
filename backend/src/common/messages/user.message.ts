@@ -1,1 +1,1 @@
-export const EMAIL_ALREADY_EXISTS = "Ese email ya existe";
+export const EMAIL_ALREADY_EXISTS = "The email already exists";

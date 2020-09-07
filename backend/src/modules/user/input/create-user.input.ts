@@ -9,28 +9,28 @@ import { IsNotEmpty, MinLength, Length, IsEmail, Matches} from 'class-validator'
 export class CreateUserInput {
 
     @Length(3, 50,
-        { message:  "Los nombres deben tener por lo menos 3 caracteres y máximo 50 caracteres"})
+        { message:  "Names must be at least 3 characters and maximum 50 characters"})
     @Field()
     firstNames: string;
 
     @Length(3, 50,
-        { message:  "Los nombres deben tener por lo menos 3 caracteres y máximo 50 caracteres"}) 
+        { message:  "Lastnames must have at least 3 characters and a maximum of 50 characters"}) 
     @Field()
     lastNames: string;
 
     @MinLength(8, {
-        message : "La contraseña debe tener al menos 8 caracteres"
+        message : "The password must be at least 8 characters long"
     })
     @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-        message : 'Asegurese que su contraseña sea segura'
+        message : 'Make sure your password is secure'
     })
+    
     @Field()
     password : string;
 
-    @IsNotEmpty({
-        message : "La descripción no puede estar vacia"
+    @Field({
+        nullable: true
     })
-    @Field()
     description : string;
 
     @IsEmail()
@@ -38,12 +38,12 @@ export class CreateUserInput {
     email : string;
     
     @Length(3, 30, 
-        { message : "El nombre del País debe terner por lo menos 3 caracteres y máximo 30 caracteres"})
+        { message : "Country name must have at least 3 characters and a maximum of 30 characters"})
     @Field()
     country : string;
 
     @Length(3, 30, 
-        { message : "El nombre de la ciudad debe terner por lo menos 3 caracteres y máximo 30 caracteres"})
+        { message : "City name must have at least 3 characters and a maximum of 30 characters"})
     @Field()
     city: string;
 
