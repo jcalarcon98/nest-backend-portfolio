@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from '../../services/auth/register.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-register',
@@ -9,7 +12,7 @@ import { RegisterService } from '../../services/auth/register.service';
 })
 export class RegisterComponent {
 
-  public formSubmitted = false;
+  public isformSubmitted = false;
 
   public registerForm = this.formBuilder.group({
     firstNames: ['Jean Carlos', [Validators.required, Validators.minLength(3)]],
@@ -18,25 +21,39 @@ export class RegisterComponent {
     country: ['Ecuador', Validators.required],
     city: ['Loja', Validators.required],
     password: ['Dellinspiron15', Validators.required],
-    secondPassword: ['caminantes12', Validators.required]
+    secondPassword: ['Dellinspiron15', Validators.required]
   });
 
   constructor(
     private formBuilder: FormBuilder,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private router: Router
   ) { }
 
   createUser(){
-    this.formSubmitted = true;
-    console.log(this.registerForm.value);
+    this.isformSubmitted = true;
     const user = {...this.registerForm.value};
     delete user.secondPassword;
-    console.log(user);
-    this.registerService.registerUser(user);
+    this.registerService.registerUser(user).subscribe(({errors, data}) => {
+
+      if (errors){
+        Swal.fire({
+          title: 'Error!',
+          text: errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Retry'
+        });
+
+        return;
+      }
+
+      this.router.navigate(['/dashboard']);
+
+    });
   }
 
   invalidInput(inputName: string): boolean{
-    if (this.registerForm.get(inputName).invalid && this.formSubmitted) { return true; }
+    if (this.registerForm.get(inputName).invalid && this.isformSubmitted) { return true; }
     return false;
   }
 

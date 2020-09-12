@@ -53,7 +53,7 @@ export class UploadImageUtils{
         try{
             
             image.createReadStream().pipe(createWriteStream( ShareUtils.getImagePath(type, newNameFile)))
-                                .on('error', (error)=> { console.log('FALLO',error ); return false});
+                                .on('error', (error)=> { return false;});
 
             return true;
             

@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { tap } from 'rxjs/operators';
 
 const signUp = gql`
   mutation signUp($createUserInput: CreateUserInput!) {
     signUp(createUserInput: $createUserInput) {
-      country
+      id,
+      firstNames,
+      lastNames,
+      email,
+      country,
+      city,
+      accessToken
     }
   }
 `;
@@ -19,15 +26,20 @@ export class RegisterService {
 
   registerUser(user){
 
-    this.apollo.mutate({
+    return this.apollo.mutate({
       mutation: signUp,
+      errorPolicy: 'all',
       variables: {
         createUserInput: user
       }
-    }).subscribe(({data}) => {
-      console.log('Ojito con la Data', data);
-    }, (error) => {
-      console.log('There is an error', error);
-    });
+    }).pipe(
+      tap(({errors, data}: {errors: any, data: any}) => {
+
+        if (errors) { return; }
+
+        const { signUp } = data;
+        localStorage.setItem('token', signUp.accessToken);
+      })
+    );
   }
 }

@@ -4,23 +4,19 @@
       <div class="signup-content">
           <div class="signup-form">
               <h2 class="form-title">Log in</h2>
-              <form method="POST" class="register-form" id="register-form">
-                  <div class="form-group">
-                      <label for="name"><i class="mdi mdi-human-greeting"></i></label>
-                      <input type="text" name="name" id="name" placeholder="First Names"/>
-                  </div>
+              <form
+                (ngSubmit)="login()"
+                [formGroup]="loginForm"
+                class="register-form"
+                id="register-form">
                   <div class="form-group">
                       <label for="email"><i class="mdi mdi-email-outline"></i></label>
-                      <input type="email" name="email" id="email" placeholder="Your Email"/>
+                      <input type="email" name="email" id="email" placeholder="Your Email" formControlName="email"/>
                   </div>
                   <div class="form-group">
-                      <label for="pass"><i class="mdi mdi-account-key"></i></label>
-                      <input type="password" name="pass" id="pass" placeholder="Password"/>
-                  </div>
-                  <div class="form-group">
-                      <label for="re-pass"><i class="mdi mdi-repeat"></i></label>
-                      <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                  </div>
+                    <label for="pass"><i class="mdi mdi-key"></i></label>
+                    <input type="password" name="password" id="password" formControlName="password"/>
+                </div>
                   <button type="button" type="submit" class="btn btn-info btn-block">Log in</button>
               </form>
           </div>

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullComponent } from './layouts/full/full.component';
 import { AuthRoutingModule } from './auth/auth.routing';
 
-
 const routes: Routes = [
   {
       path: '',

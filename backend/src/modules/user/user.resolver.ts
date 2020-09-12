@@ -47,13 +47,13 @@ export class UserResolver implements IUpdateImage {
     return this.userService.getUser(user);
   }
 
-  @Mutation(returns => Boolean, { name: `updateUserImage` })
+  @Mutation(returns => String!, { name: `updateUserImage` })
   @UseGuards(GqlAuthGuard)
   async updateImage(
     @Args('updateImageInput') updateImageInput: UpdateImageInput,
     @Args({ name: 'picture', type: () => GraphQLUpload }) image: FileUpload,
     @GetUser() user: User,
-  ): Promise<boolean> {
+  ): Promise<string> {
     const { idImage } = updateImageInput;
     const context = new UpdateImageContext(this.userService);
 

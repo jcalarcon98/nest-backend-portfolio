@@ -8,6 +8,6 @@ export interface IUpdateImage{
     updateImageInput : UpdateImageInput,
     image: FileUpload,
     user : User 
-  ) : Promise<boolean>;
+  ) : Promise<string>;
 
 }

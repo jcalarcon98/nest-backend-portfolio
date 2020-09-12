@@ -66,7 +66,7 @@ export class ServicesResolver implements IUpdateImage {
     @Args('updateImageInput') updateImageInput: UpdateImageInput,
     @Args({ name: 'picture', type: () => GraphQLUpload }) image: FileUpload,
     @GetUser() user: User,
-  ): Promise<boolean> {
+  ): Promise<string> {
     
     const { idImage } = updateImageInput;
     

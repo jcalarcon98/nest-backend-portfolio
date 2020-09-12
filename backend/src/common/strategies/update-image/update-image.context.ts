@@ -7,18 +7,14 @@ import { User } from '../../../modules/user/user.entity';
 
 export class UpdateImageContext{
 
-  private uploadImageClass : IUpdateStrategy;
-
-  constructor(uploadImageClass : IUpdateStrategy){
-    this.uploadImageClass = uploadImageClass;
-  }
+  constructor(private uploadImageClass : IUpdateStrategy){}
 
   async executeUploadImage(
     idImage : number,
     type: UploadImageTypes, 
     image : FileUpload, 
     user : User
-  ) : Promise<boolean> {
+  ) : Promise<string> {
     const newImageName = UploadImageUtils.addCustomNameFileToImage(idImage, type, image);
 
     //UPDATE IMAGE ON DB
@@ -28,12 +24,11 @@ export class UpdateImageContext{
 		if(isUpdatedImage){
 			const isFileMoved = UploadImageUtils.moveFileToServer(type, newImageName, image);
 			if(!isFileMoved){
-        //TODO CHANGE MESSAGE.
-				throw new RequestTimeoutException("Waiting Time is Over");
+        throw new RequestTimeoutException("Waiting Time is Over");
 			}
     }	
     
-		return true;
+		return newImageName;
   }
 
 }

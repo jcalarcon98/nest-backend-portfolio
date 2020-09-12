@@ -1,10 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Project } from 'src/modules/project/project.entity';
-import { type } from 'os';
-import { ServiceType } from '../services/types/service.type';
-import { Service } from '../services/service.entity';
 
-import { Skill } from '../skill/skill.entity';
 import { EducationType } from '../education/education.type';
 import { Education } from '../education/education.entity';
 import { Experience } from '../experience/experience.entity';
@@ -28,7 +23,10 @@ export class UserType {
   @Field({ description: 'Person lastnames' })
   lastNames: string;
 
-  @Field({ description: 'Person description' })
+  @Field({ 
+    description: 'Person description',
+    nullable: true
+  })
   description: string;
 
   @Field({ description: 'Person email' })
