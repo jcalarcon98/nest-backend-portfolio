@@ -25,7 +25,6 @@ export class UserRepository extends Repository<User> {
    * @param id  user id
    */
   async getUser(user: User): Promise<User> {
-    user.image = UserUtils.getPhotoUrl(user);
     return user;
   }
 
@@ -111,7 +110,6 @@ async validateUserPassword(
     const user: User = await this.findOne({ email });
 
     if (user && await user.validatePassword(password)) {
-      user.image = UserUtils.getPhotoUrl(user);
       return user;
     } else {
       return null;

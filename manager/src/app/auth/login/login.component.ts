@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/auth/login.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Usuario } from '../../models/usuario.model';
 
 @Component({
   selector: 'app-login',
@@ -45,7 +44,6 @@ export class LoginComponent{
 
         return;
       }
-
 
       this.router.navigate(['dashboard']);
     });

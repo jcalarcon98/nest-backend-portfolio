@@ -119,7 +119,4 @@ export class UserUtils {
     return bcrypt.compare(currentToken, userToken);
   }
 
-  static getPhotoUrl(user: User) {
-    return `${hostConfig}/api/users/${user.image}`;
-  }
 }

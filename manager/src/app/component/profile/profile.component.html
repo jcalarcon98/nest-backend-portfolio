@@ -3,25 +3,22 @@
     <div class="col-lg-3 offset-md-1">
       <div class="card">
           <div class="card-body" align="center">
-              <h6 class="card-title">Fotografia del Usuario</h6>
+              <h6 class="card-title">Current Picture</h6>
 
-              <img *ngIf="!imagenTemp" [src]="'assets/images/users/1.jpg'" class="mb-2 img-circle" style="width: 100px;" >
-              <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150" >
+              <img *ngIf="!newProfilePicture" [src]="getImage()" class="mb-2 img-circle img-size" >
+              <img *ngIf="newProfilePicture" [src]="tempImage" class="mb-2 img-circle img-size">
 
-              <br>
-
-              <div class="input-group mb-3">
+              <div class="input-group mb-2">
                 <div class="custom-file sm">
-                  <input type="file" class="custom-file-input custom-file-input-option" id="profileInput">
+                  <input type="file" class="custom-file-input custom-file-input-option" id="profileInput" (change)='onChange($event)'>
                   <label class="custom-file-label text-left" for="profileInput"> {{ currentFileName }}</label>
                 </div>
               </div>
 
-              <button (click)="canbiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+              <button (click)="updateImage()" [disabled]="!newProfilePicture" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
                       <i class="fa fa-save"></i>
-                      Actualizar Foto
+                      Update Picture
               </button>
-
           </div>
       </div>
   </div>

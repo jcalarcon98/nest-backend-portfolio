@@ -1,4 +1,4 @@
-export class Usuario{
+export class User{
 
   constructor(
     public id: any,
@@ -8,6 +8,7 @@ export class Usuario{
     public email: string,
     public country: string,
     public city: string,
+    public accessToken: string,
     public description?: string,
     public address?: string,
     public image?: string,
@@ -21,6 +22,5 @@ export class Usuario{
     public socials?: any,
     public phones?: any
   ){}
-
 
 }

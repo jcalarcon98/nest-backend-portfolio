@@ -1,44 +1,55 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
 import { tap } from 'rxjs/operators';
-
-const signUp = gql`
-  mutation signUp($createUserInput: CreateUserInput!) {
-    signUp(createUserInput: $createUserInput) {
-      id,
-      firstNames,
-      lastNames,
-      email,
-      country,
-      city,
-      accessToken
-    }
-  }
-`;
+import { SIGN_UP } from '../../operations/mutation/auth/register.mutation';
+import { RegisterForm } from '../../interfaces/register-form.interface';
+import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
 
+  private currentUser: User;
+
   constructor(private apollo: Apollo) { }
 
-  registerUser(user){
+  registerUser(createUserInput: RegisterForm){
 
     return this.apollo.mutate({
-      mutation: signUp,
+      mutation: SIGN_UP,
       errorPolicy: 'all',
       variables: {
-        createUserInput: user
+        createUserInput
       }
     }).pipe(
       tap(({errors, data}: {errors: any, data: any}) => {
 
         if (errors) { return; }
 
-        const { signUp } = data;
-        localStorage.setItem('token', signUp.accessToken);
+        const {
+          id,
+          firstNames,
+          lastNames,
+          email,
+          country,
+          city,
+          accessToken,
+        } = data.signUp;
+
+        this.currentUser = {
+          id,
+          firstNames,
+          lastNames,
+          email,
+          country,
+          accessToken,
+          city,
+          password: '',
+        };
+
+        localStorage.setItem('user', JSON.stringify(this.currentUser));
+        localStorage.setItem('token', this.currentUser.accessToken);
       })
     );
   }

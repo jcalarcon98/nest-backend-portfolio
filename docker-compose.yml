@@ -6,7 +6,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
     ports:
-      - "5432:5432"
+      - "8000:5432"
     volumes:
       - /home/jcao/Documents/Development/Projects/Personal Projects/Portfolio/database/Postgres-DB/portfolio-db:/var/lib/postgresql/data
   redis:

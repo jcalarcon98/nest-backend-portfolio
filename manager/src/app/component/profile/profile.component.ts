@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../services/auth/login.service';
-import { Usuario } from '../../models/usuario.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
+import Swal from 'sweetalert2';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styles: [
-  ]
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
 
-  currentUser: any;
-  imagenSubir: any;
-  imagenTemp: any;
+  currentUser: User;
+  newProfilePicture: File;
+  tempImage: any;
 
   currentFileName = 'Select picture';
 
@@ -22,10 +21,9 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService,
     private userService: UserService,
   ) {
-    this.currentUser = this.loginService.currentUser;
+    this.refreshCurrentUserData();
     this.initReactiveForm();
   }
 
@@ -43,16 +41,73 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // TODO create pipe andd delete this method
+  getImage(): string{
+    return `http://localhost:4000/api/users/${this.currentUser.image}`;
+  }
+
+
   updateCurrentUser(){
-    const updatedUser = this.updateUserForm.value;
-    delete updatedUser.email;
+
+    const {email, ...updatedUser} = this.updateUserForm.value;
+
     this.userService.updateUser(updatedUser).subscribe(({errors, data}) => {
+
+      if (errors){
+        Swal.fire({
+          title: 'Error!',
+          text: errors[0].message,
+          icon: 'error',
+          confirmButtonText: 'Retry'
+        });
+
+        return;
+      }
+
+      // TODO improve this Swal.fire call.
+      Swal.fire({
+        title: 'Correct',
+        text: 'Updated Profile Information',
+        icon: 'success'
+      });
+
+      this.refreshCurrentUserData();
+    });
+  }
+
+  refreshCurrentUserData(){
+    this.currentUser = this.userService.currentUser;
+  }
+
+  onChange(evt) {
+
+    const { files, validity } = evt.target;
+
+    if (validity.valid) {
+
+      this.newProfilePicture = files.item(0);
+
+      if (this.newProfilePicture.type.indexOf('image') < 0) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Please, select only images',
+          icon: 'error',
+          confirmButtonText: 'Retry'
+        });
+      }
+
+      const reader = new FileReader();
+      reader.readAsDataURL(this.newProfilePicture);
+      reader.onloadend = () => this.tempImage = reader.result;
+    }
+  }
+
+  updateImage() {
+    this.userService.updateUserImage(this.newProfilePicture, {idImage: this.currentUser.id}).subscribe(({errors, data}) => {
       console.log('ojito', data, errors);
     });
   }
 
-  seleccionImagen(eded){}
-  canbiarImagen(){}
 
 
 }
