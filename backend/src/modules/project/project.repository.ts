@@ -26,7 +26,7 @@ export class ProjectRepository extends Repository<Project> {
   }
 
   async getProjects(paginationInput: PaginationInput, user: User): Promise<ListCount>{
-    
+
     const { skip, take } = paginationInput;
 
     const projectsArray: any[] = await this.findAndCount({

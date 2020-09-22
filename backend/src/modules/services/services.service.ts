@@ -9,6 +9,7 @@ import { UpdateImageContext } from '../../common/strategies/update-image/update-
 import { UploadImageTypes } from '../../common/enums/upload-image-types.enum';
 import { IUpdateStrategy } from '../../common/strategies/update-image/upload-image.strategy';
 import { PaginationInput } from '../../common/input/pagination.input';
+import { ListCount } from '../../common/interfaces/list-count.interface';
 
 
 @Injectable()
@@ -27,7 +28,7 @@ export class ServicesService implements IUpdateStrategy {
   }
 
 
-  async getServices(paginationInput: PaginationInput, user: User): Promise<Service[]> {
+  async getServices(paginationInput: PaginationInput, user: User): Promise<ListCount> {
     return await this.serviceRepository.getServices(paginationInput, user);
   }
 

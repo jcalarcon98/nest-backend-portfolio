@@ -13,8 +13,6 @@ import { UserUtils } from '../../utils/user.utils';
 import { ProjectService } from '../project/project.service';
 import { PaginationInput } from '../../common/input/pagination.input';
 import { IUpdateStrategy } from '../../common/strategies/update-image/upload-image.strategy';
-import { Skill } from '../skill/skill.entity';
-import { Service } from '../services/service.entity';
 import { ServicesService } from '../services/services.service';
 import { SendEmailContext } from '../../common/strategies/send-email/send-email.context';
 import { ResetPasswordEmail } from '../../common/email/reset-password.email';
@@ -138,14 +136,14 @@ export class UserService implements IUpdateStrategy {
   paginationSkill(
     paginationInput: PaginationInput,
     user: User  
-  ):Promise<Skill[]> {
+  ):Promise<ListCount> {
     return  this.skillService.getSkills(paginationInput, user);
   }
 
   paginationService(
     paginationInput: PaginationInput,
     user: User  
-  ): Promise<Service[]> {
+  ): Promise<ListCount> {
     return  this.servicesService.getServices(paginationInput, user);
   }
 }

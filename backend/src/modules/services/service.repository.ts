@@ -23,7 +23,7 @@ export class ServiceRepository extends Repository<Service>{
     return service; 
   }
 
-  async getServices(paginationInput: PaginationInput, user: User): Promise<any> {
+  async getServices(paginationInput: PaginationInput, user: User): Promise<ListCount> {
     const { skip, take } = paginationInput;
 
     const servicesArray: any[] = await this.findAndCount({

@@ -55,7 +55,9 @@ export class UserType {
   })
   confirmed: string;
 
-  @Field(type => ProjectCountType)
+  @Field(type => ProjectCountType, {
+    nullable: true
+  })
   projects: ProjectCountType;
 
   @Field(type => ServiceCountType)

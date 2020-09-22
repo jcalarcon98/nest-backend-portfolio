@@ -3,8 +3,6 @@ import { ObjectType, Field } from '@nestjs/graphql';
 import { Project } from '../project.entity';
 import { ProjectType } from './project.type';
 
-
-
 /**
  * Contains all the user fields for GraphQL
  * documentation
@@ -15,7 +13,7 @@ export class ProjectCountType {
   @Field(type => [ProjectType])
   list: Project[];
 
-  @Field({ description: 'Numero de proyectos' })
+  @Field({ description: 'Project numbers' })
   count: number;
 
 }

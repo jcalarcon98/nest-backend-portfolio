@@ -24,7 +24,7 @@ export class SkillRepository extends Repository<Skill>{
   }
 
 
-  async getSkills(paginationInput: PaginationInput, user: User): Promise<any> {
+  async getSkills(paginationInput: PaginationInput, user: User): Promise<ListCount> {
     const { skip, take } = paginationInput;
 
     const skillsArray: any[] = await this.findAndCount({

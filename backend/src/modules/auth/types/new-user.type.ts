@@ -1,5 +1,4 @@
-import {  ObjectType, Field } from '@nestjs/graphql';
-
+import { ObjectType, Field, OmitType } from '@nestjs/graphql';
 import { UserType } from '../../user/user.type';
 
 /**
@@ -7,10 +6,10 @@ import { UserType } from '../../user/user.type';
  * that should go when creating a new user.
  */
 @ObjectType('NewUser')
-export class NewUserType extends UserType{
+export class NewUserType extends OmitType(UserType, ['projects', 'services', 'skills']){
 
     @Field({
-        description: "Person access token after register"
+        description: "Access Token"
     })
     accessToken : string;
 }

@@ -24,9 +24,9 @@ import { IUpdateImage } from '../../common/interfaces/upload-image.interface';
 import { UpdateImageContext } from '../../common/strategies/update-image/update-image.context';
 import { UploadImageTypes } from '../../common/enums/upload-image-types.enum';
 import { PaginationInput } from '../../common/input/pagination.input';
-import { Skill } from '../skill/skill.entity';
-import { Service } from '../services/service.entity';
 import { ProjectCountType } from '../project/types/project-count.type';
+import { SkillCountType } from '../skill/types/skill-count.type';
+import { ServiceCountType } from '../services/types/service-count.type';
 
 /**
  * User Resolver
@@ -113,27 +113,28 @@ export class UserResolver implements IUpdateImage {
   }
 
   @ResolveField(returns => ProjectCountType)
-  async projects(
+  projects(
     @Args('paginationInput') paginationInput: PaginationInput,
     @Parent() user: User,
   ): Promise<ListCount> {
-    return await this.userService.paginationProject(paginationInput, user);
+
+    return  this.userService.paginationProject(paginationInput, user);
   }
 
 
-  @ResolveField()
-  async skills(
+  @ResolveField(returns =>  SkillCountType)
+  skills(
     @Args('paginationInput') paginationInput: PaginationInput,
     @Parent() user: User,
-  ): Promise<Skill[]> {
-    return await this.userService.paginationSkill(paginationInput, user);
+  ): Promise<ListCount> {
+    return this.userService.paginationSkill(paginationInput, user);
   }
 
-  @ResolveField()
-  async services(
+  @ResolveField(returns => ServiceCountType)
+  services(
     @Args('paginationInput') paginationInput: PaginationInput,
     @Parent() user: User,
-  ): Promise<Service[]> {
-    return await this.userService.paginationService(paginationInput, user);
+  ): Promise<ListCount> {
+    return this.userService.paginationService(paginationInput, user);
   }
 }
