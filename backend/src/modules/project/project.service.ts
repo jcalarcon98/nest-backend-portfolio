@@ -24,8 +24,8 @@ export class ProjectService implements IUpdateStrategy {
     return await this.projectRepository.getProject(id, user);
   }
 
-  async getProjects(paginationInput: PaginationInput): Promise<ListCount> {
-    return await this.projectRepository.getProjects(paginationInput);
+  async getProjects(paginationInput: PaginationInput, user: User): Promise<ListCount> {
+    return await this.projectRepository.getProjects(paginationInput, user);
   }
 
   async createProject(

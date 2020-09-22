@@ -10,13 +10,13 @@ import { NOT_FOUND_PROJECT } from '../../common/messages/project.message';
 import { ProjectUtils } from '../../utils/project.utils';
 import { PaginationInput } from '../../common/input/pagination.input';
 
+
 @EntityRepository(Project)
 export class ProjectRepository extends Repository<Project> {
 
-  /**
-   *
-   */
+  
   async getProject(id: number, user: User): Promise<Project> {
+    
     const project = await this.findOne({ where: { id, userId: user.id } });
 
     if (!project) {
@@ -25,10 +25,14 @@ export class ProjectRepository extends Repository<Project> {
     return project;
   }
 
-  async getProjects(paginationInput: PaginationInput): Promise<ListCount>{
+  async getProjects(paginationInput: PaginationInput, user: User): Promise<ListCount>{
+    
     const { skip, take } = paginationInput;
 
     const projectsArray: any[] = await this.findAndCount({
+      where: {
+        userId: user.id
+      },
       skip,
       take,
     });

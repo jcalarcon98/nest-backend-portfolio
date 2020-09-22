@@ -1,4 +1,3 @@
-
 import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
 import { CreateOrUpdateProjectInput } from './input/create-project.input';
@@ -13,6 +12,8 @@ import { IUpdateImage } from '../../common/interfaces/upload-image.interface';
 import { UpdateImageContext } from '../../common/strategies/update-image/update-image.context';
 import { UploadImageTypes } from '../../common/enums/upload-image-types.enum';
 import { ProjectType } from './types/project.type';
+import { PaginationInput } from '../../common/input/pagination.input';
+import { ProjectCountType } from './types/project-count.type';
 
 @Resolver('Project')
 export class ProjectResolver implements IUpdateImage {
@@ -20,13 +21,22 @@ export class ProjectResolver implements IUpdateImage {
 
   @Query(returns => ProjectType)
   @UseGuards(GqlAuthGuard)
-  async project(@Args('id') id: number, @GetUser() user: User) {
+  project(@Args('id') id: number, @GetUser() user: User) {
     return this.projectService.getProject(id, user);
+  }
+
+  @Query(returns => ProjectCountType)
+  @UseGuards(GqlAuthGuard)
+  projects(
+    @Args('paginationInput') paginationInput: PaginationInput,
+    @GetUser() user: User
+  ){
+    return this.projectService.getProjects(paginationInput, user);
   }
 
   @Mutation(returns => ProjectType)
   @UseGuards(GqlAuthGuard)
-  async createProject(
+  createProject(
     @Args('createProjectInput') createProjectInput: CreateOrUpdateProjectInput,
     @Args({ name: 'picture', type: () => GraphQLUpload, nullable: true }) image: FileUpload,
     @GetUser() user: User,
@@ -36,7 +46,7 @@ export class ProjectResolver implements IUpdateImage {
 
   @Mutation(returns => Boolean, { name: `updateProjectImage` })
   @UseGuards(GqlAuthGuard)
-  async updateImage(
+  updateImage(
     @Args('updateImageInput') updateImageInput: UpdateImageInput,
     @Args({ name: 'picture', type: () => GraphQLUpload }) image: FileUpload,
     @GetUser() user: User,
@@ -54,7 +64,7 @@ export class ProjectResolver implements IUpdateImage {
 
   @Mutation(returns => ProjectType)
   @UseGuards(GqlAuthGuard)
-  async updateProject(
+  updateProject(
     @Args('id') id: number,
     @Args('updateProjectInput') updateProjectInput: CreateOrUpdateProjectInput,
     @GetUser() user: User,

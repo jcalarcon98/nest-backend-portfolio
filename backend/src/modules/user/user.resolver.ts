@@ -26,6 +26,7 @@ import { UploadImageTypes } from '../../common/enums/upload-image-types.enum';
 import { PaginationInput } from '../../common/input/pagination.input';
 import { Skill } from '../skill/skill.entity';
 import { Service } from '../services/service.entity';
+import { ProjectCountType } from '../project/types/project-count.type';
 
 /**
  * User Resolver
@@ -111,12 +112,12 @@ export class UserResolver implements IUpdateImage {
     return this.userService.generateToken(user);
   }
 
-  @ResolveField()
+  @ResolveField(returns => ProjectCountType)
   async projects(
     @Args('paginationInput') paginationInput: PaginationInput,
     @Parent() user: User,
   ): Promise<ListCount> {
-    return await this.userService.paginationProject(paginationInput);
+    return await this.userService.paginationProject(paginationInput, user);
   }
 
 
@@ -125,7 +126,7 @@ export class UserResolver implements IUpdateImage {
     @Args('paginationInput') paginationInput: PaginationInput,
     @Parent() user: User,
   ): Promise<Skill[]> {
-    return await this.userService.paginationSkill(paginationInput);
+    return await this.userService.paginationSkill(paginationInput, user);
   }
 
   @ResolveField()
@@ -133,6 +134,6 @@ export class UserResolver implements IUpdateImage {
     @Args('paginationInput') paginationInput: PaginationInput,
     @Parent() user: User,
   ): Promise<Service[]> {
-    return await this.userService.paginationService(paginationInput);
+    return await this.userService.paginationService(paginationInput, user);
   }
 }

@@ -25,8 +25,8 @@ export class SkillService implements IUpdateStrategy  {
 
 
 
-  async getSkills(paginationInput: PaginationInput): Promise<Skill[]> {
-    return await this.skillRepository.getSkills(paginationInput);
+  async getSkills(paginationInput: PaginationInput, user: User): Promise<Skill[]> {
+    return await this.skillRepository.getSkills(paginationInput, user);
   }
 
 

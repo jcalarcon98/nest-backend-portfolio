@@ -153,6 +153,18 @@ export const ComponentsRoutes: Routes = [
         }
       },
       {
+        path: 'cards',
+        component: CardsComponent,
+        data: {
+          title: 'Cards Component',
+          urls: [
+            { title: 'Dashboard', url: '/cards' },
+            { title: 'ngComponent' },
+            { title: 'Cards Component' }
+          ]
+        }
+      },
+      {
         path: 'accordion',
         component: NgbdAccordionBasicComponent,
         data: {

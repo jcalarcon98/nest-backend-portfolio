@@ -1,32 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../services/user/user.service';
-import Swal from 'sweetalert2';
 import { User } from '../../models/user.model';
+import { UserService } from '../../services/user/user.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
-
+export class ProfileComponent {
+  /**
+   * Currently logged user
+   */
   currentUser: User;
+
+  /**
+   * Image if user need to change Profile Picture
+   */
   newProfilePicture: File;
   tempImage: any;
 
+  /**
+   * @ignore
+   */
   currentFileName = 'Select picture';
 
+  /**
+   * @ignore
+   */
   updateUserForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-  ) {
+  ){
     this.refreshCurrentUserData();
     this.initReactiveForm();
   }
 
+  /**
+   * Init Reactive form for update user information
+   */
   initReactiveForm(){
     this.updateUserForm = this.formBuilder.group({
       firstNames: [this.currentUser.firstNames, [Validators.required, Validators.minLength(3)]],
@@ -39,14 +55,15 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  // TODO create pipe andd delete this method
+  // TODO create pipe and delete this method
   getImage(): string{
     return `http://localhost:4000/api/users/${this.currentUser.image}`;
   }
 
 
+  /**
+   * Update current user information with the values in the above reactiveForm
+   */
   updateCurrentUser(){
 
     const {email, ...updatedUser} = this.updateUserForm.value;
@@ -75,10 +92,17 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Refresh the current user information after update.
+   */
   refreshCurrentUserData(){
     this.currentUser = this.userService.currentUser;
   }
 
+  /**
+   * Change the image only for visualize purpose
+   * @param evt event executed when user select a new picture
+   */
   onChange(evt) {
 
     const { files, validity } = evt.target;
@@ -102,6 +126,9 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * Update user profile picture.
+   */
   updateImage() {
     this.userService.updateUserImage(this.newProfilePicture, {idImage: this.currentUser.id}).subscribe(({errors, data}) => {
       console.log('ojito', data, errors);

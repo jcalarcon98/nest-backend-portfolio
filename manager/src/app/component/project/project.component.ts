@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent{
 
-  constructor() { }
+  existsProjects: boolean;
 
-  ngOnInit(): void {
+  constructor(){
+    this.existsProjects = true;
   }
+
+  /**
+   * Get user projects
+   */
+  getProjects(){}
 
 }

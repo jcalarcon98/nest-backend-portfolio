@@ -13,6 +13,8 @@ import { UpdateImageContext } from '../../common/strategies/update-image/update-
 import { UploadImageTypes } from '../../common/enums/upload-image-types.enum';
 import { IUpdateImage } from '../../common/interfaces/upload-image.interface';
 import { SkillType } from './types/skill.type';
+import { SkillCountType } from './types/skill-count.type';
+import { PaginationInput } from '../../common/input/pagination.input';
 
 
 
@@ -28,6 +30,16 @@ export class SkillResolver implements IUpdateImage {
     @GetUser() user : User 
   ){
     return this.skillService.getSkill(id, user);
+  }
+
+
+  @Query(returns => SkillCountType)
+  @UseGuards(GqlAuthGuard)
+  skills(
+    @Args('paginationInput') paginationInput: PaginationInput,
+    @GetUser() user: User
+  ){
+    return this.skillService.getSkills(paginationInput, user);
   }
 
   @Mutation(returns => SkillType)

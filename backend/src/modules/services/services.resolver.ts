@@ -12,6 +12,8 @@ import { UpdateImageInput } from '../../common/input/upload-image.input';
 import { IUpdateImage } from '../../common/interfaces/upload-image.interface';
 import { UpdateImageContext } from 'src/common/strategies/update-image/update-image.context';
 import { UploadImageTypes } from '../../common/enums/upload-image-types.enum';
+import { ServiceCountType } from './types/service-count.type';
+import { PaginationInput } from '../../common/input/pagination.input';
 
 @Resolver('Services')
 export class ServicesResolver implements IUpdateImage {
@@ -27,6 +29,14 @@ export class ServicesResolver implements IUpdateImage {
     return this.serviceService.getService(id, user);
   }
 
+  @Query(returns => ServiceCountType)
+  @UseGuards(GqlAuthGuard)
+  services(
+    @Args('paginationInput') paginationInput: PaginationInput,
+    @GetUser() user: User
+  ){
+    return this.serviceService.getServices(paginationInput, user);
+  }
 
   @Mutation(returns => ServiceType)
   @UseGuards(GqlAuthGuard)

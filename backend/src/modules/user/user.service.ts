@@ -130,15 +130,22 @@ export class UserService implements IUpdateStrategy {
 
   paginationProject(
     paginationInput: PaginationInput,
+    user: User
   ): Promise<ListCount> {
-    return this.projectService.getProjects(paginationInput);
+    return this.projectService.getProjects(paginationInput, user);
   }
 
-  paginationSkill(paginationInput: PaginationInput):Promise<Skill[]> {
-    return  this.skillService.getSkills(paginationInput);
+  paginationSkill(
+    paginationInput: PaginationInput,
+    user: User  
+  ):Promise<Skill[]> {
+    return  this.skillService.getSkills(paginationInput, user);
   }
 
-  paginationService(paginationInput: PaginationInput): Promise<Service[]> {
-    return  this.servicesService.getServices(paginationInput);
+  paginationService(
+    paginationInput: PaginationInput,
+    user: User  
+  ): Promise<Service[]> {
+    return  this.servicesService.getServices(paginationInput, user);
   }
 }

@@ -27,8 +27,8 @@ export class ServicesService implements IUpdateStrategy {
   }
 
 
-  async getServices(paginationInput: PaginationInput): Promise<Service[]> {
-    return await this.serviceRepository.getServices(paginationInput);
+  async getServices(paginationInput: PaginationInput, user: User): Promise<Service[]> {
+    return await this.serviceRepository.getServices(paginationInput, user);
   }
 
   async createService(
