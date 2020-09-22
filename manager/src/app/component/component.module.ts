@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ComponentsRoutes } from './component.routing';
+
 import { NgbdpregressbarBasicComponent } from './progressbar/progressbar.component';
 import { NgbdpaginationBasicComponent } from './pagination/pagination.component';
 import { NgbdAccordionBasicComponent } from './accordion/accordion.component';
@@ -23,49 +24,37 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import { ToastComponent } from './toast/toast.component';
 import { ToastsContainer } from './toast/toast-container';
-import { ProjectComponent } from './project/project.component';
-import { SkillComponent } from './skill/skill.component';
-import { ServiceComponent } from './service/service.component';
-import { ExperienceComponent } from './experience/experience.component';
-import { EducationComponent } from './education/education.component';
-import { PhoneNumberComponent } from './phone-number/phone-number.component';
-import { SocialNetworkComponent } from './social-network/social-network.component';
-import { ProfileComponent } from './profile/profile.component';
+
 
 @NgModule({
-	imports: [
-		CommonModule,
-		RouterModule.forChild(ComponentsRoutes),
-		FormsModule,
-		ReactiveFormsModule,
-		NgbModule
-	],
-	declarations: [
-		NgbdpregressbarBasicComponent,
-		NgbdpaginationBasicComponent,
-		NgbdAccordionBasicComponent,
-		NgbdAlertBasicComponent,
-		NgbdCarouselBasicComponent,
-		NgbdDatepickerBasicComponent,
-		NgbdDropdownBasicComponent,
-		NgbdModalBasicComponent,
-		NgbdPopTooltipComponent,
-		NgbdratingBasicComponent,
-		NgbdtabsBasicComponent,
-		NgbdtimepickerBasicComponent,
-		NgbdtypeheadBasicComponent,
-		ButtonsComponent,
-		CardsComponent,
-		ToastComponent,
-		ToastsContainer,
-		ProjectComponent,
-		SkillComponent,
-		ServiceComponent,
-		ExperienceComponent,
-		EducationComponent,
-		PhoneNumberComponent,
-		SocialNetworkComponent,
-		ProfileComponent
-	]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(ComponentsRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
+  ],
+  declarations: [
+    NgbdpregressbarBasicComponent,
+    NgbdpaginationBasicComponent,
+    NgbdAccordionBasicComponent,
+    NgbdAlertBasicComponent,
+    NgbdCarouselBasicComponent,
+    NgbdDatepickerBasicComponent,
+    NgbdDropdownBasicComponent,
+    NgbdModalBasicComponent,
+    NgbdPopTooltipComponent,
+    NgbdratingBasicComponent,
+    NgbdtabsBasicComponent,
+    NgbdtimepickerBasicComponent,
+    NgbdtypeheadBasicComponent,
+    ButtonsComponent,
+    CardsComponent,
+    ToastComponent,
+    ToastsContainer,
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class ComponentsModule {}
