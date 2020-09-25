@@ -7,33 +7,34 @@ import 'rxjs/add/operator/mergeMap';
 
 
 @Component({
-	selector: 'app-breadcrumb',
-	templateUrl: './breadcrumb.component.html'
+  selector: 'app-breadcrumb',
+  templateUrl: './breadcrumb.component.html',
+  styleUrls: ['./breadcrumb.component.css']
 })
 export class BreadcrumbComponent{
 
-	pageInfo: Data = Object.create(null);
+  pageInfo: Data = Object.create(null);
 
-	constructor(
-		private router: Router,
-		private activatedRoute: ActivatedRoute,
-		private titleService: Title
-	) {
-		this.router.events
-			.filter(event => event instanceof NavigationEnd)
-			.map(() => this.activatedRoute)
-			.map(route => {
-				while (route.firstChild) {
-					route = route.firstChild;
-				}
-				return route;
-			})
-			.filter(route => route.outlet === 'primary')
-			.mergeMap(route => route.data)
-			.subscribe(event => {
-				this.titleService.setTitle(event.title);
-				this.pageInfo = event;
-			});
-	}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
+  ) {
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .map(() => this.activatedRoute)
+      .map(route => {
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+        return route;
+      })
+      .filter(route => route.outlet === 'primary')
+      .mergeMap(route => route.data)
+      .subscribe(event => {
+        this.titleService.setTitle(event.title);
+        this.pageInfo = event;
+      });
+  }
 
 }

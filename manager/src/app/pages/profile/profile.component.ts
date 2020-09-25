@@ -25,7 +25,7 @@ export class ProfileComponent {
   /**
    * @ignore
    */
-  currentFileName = 'Select picture';
+  currentFileName = 'Select file';
 
   /**
    * @ignore

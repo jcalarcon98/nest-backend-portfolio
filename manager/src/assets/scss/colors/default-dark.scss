@@ -31,14 +31,14 @@ $topbar-alt: #398bf7;
         }
         .navbar-light .navbar-nav .nav-item > {
             a.nav-link {
-                color: #a6b7bf;
+                color: white;
                 &:hover,
                 &:focus {
-                    color:#242a33!important;
+                    color:white!important;
                 }
             }
         }
-        
+
     }
     /*******************
 /*General Elements
@@ -92,13 +92,13 @@ $topbar-alt: #398bf7;
     .label-themecolor {
         background: $themecolor;
     }
-    
+
     .sidebar-nav ul li a {
         &.router-link-active,
         &:hover {
-            color: $themecolor;
+            color: #14213d;
             i {
-                color: $themecolor;
+                color:#14213d;
             }
         }
     }
@@ -118,7 +118,7 @@ $topbar-alt: #398bf7;
         }
 
     }
-    
+
 }
 }
 

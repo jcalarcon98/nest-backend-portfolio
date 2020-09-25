@@ -1,4 +1,29 @@
-.img-size{
+.image{
   width: 100px;
   height: 100px;
+  border-radius: 10%;
+}
+
+.profile-content{
+  background: #e5e5e5;
+  margin-top: 0%;
+}
+
+.btn-update{
+  background: #fca311;
+}
+
+.picture{
+  min-width: 220px;
+}
+
+.description{
+  min-width: 300px;
+  margin-top: 18px;
+}
+
+
+.first-row{
+  justify-content: center;
+  align-items: center;
 }

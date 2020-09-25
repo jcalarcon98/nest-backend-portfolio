@@ -16,7 +16,6 @@
             height: auto;
             li {
                 a {
-                    
                     padding: 10px;
                     display: block;
                 }
@@ -24,3 +23,8 @@
         }
     }
 }
+
+.nav-pills > li.active > a{
+  color: #14213d;
+}
+

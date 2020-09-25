@@ -21,9 +21,9 @@ import { NgbdtabsBasicComponent } from './tabs/tabs.component';
 import { NgbdtimepickerBasicComponent } from './timepicker/timepicker.component';
 import { NgbdtypeheadBasicComponent } from './typehead/typehead.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { CardsComponent } from './card/card.component';
 import { ToastComponent } from './toast/toast.component';
 import { ToastsContainer } from './toast/toast-container';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -49,12 +49,13 @@ import { ToastsContainer } from './toast/toast-container';
     NgbdtimepickerBasicComponent,
     NgbdtypeheadBasicComponent,
     ButtonsComponent,
-    CardsComponent,
     ToastComponent,
     ToastsContainer,
+    CardComponent,
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    CardComponent
   ]
 })
 export class ComponentsModule {}
