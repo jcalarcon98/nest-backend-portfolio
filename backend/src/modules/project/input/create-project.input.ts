@@ -1,7 +1,6 @@
 import { InputType, Field } from '@nestjs/graphql';
-import { IsNotEmpty, IsUrl, IsIn} from 'class-validator';
+import { IsNotEmpty, IsUrl, IsIn, IsOptional} from 'class-validator';
 import { ProjectStatusEnum } from '../../../common/enums/project-status.enum';
-
 
 /**
  * Allows you to define the fields
@@ -22,13 +21,24 @@ export class CreateOrUpdateProjectInput{
     @Field()
     description : string;
 
+    @IsOptional()
     @IsUrl({}, {
       message: 'Verify that the URL is valid'
     })
     @Field({
       nullable: true
     })
-    url : string;
+    urlDemo: string;
+
+    @IsOptional()
+    @IsUrl({}, {
+      message: 'Verify that the URL is valid'
+    })
+    @Field({
+      description: 'If the repository project is publicly accessible',
+      nullable: true
+    })
+    urlRepository: string;
 
     @IsNotEmpty({
       message:  "Proyect status is required"

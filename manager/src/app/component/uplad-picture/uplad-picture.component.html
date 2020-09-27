@@ -1,0 +1,20 @@
+
+<div class="image-card">
+  <h6 class="card-title">Current Picture</h6>
+
+  <img *ngIf="!newPicture" [src]="imageUrl" class="mb-2 image" >
+  <img *ngIf="newPicture" [src]="tempImage" class="mb-2 image">
+
+  <div class="input-group">
+    <div class="custom-file">
+      <input type="file" id="profileInput" style="display: none;" (change)='onChange($event)'>
+      <label class="custom-file-label text-left" for="profileInput"> {{ currentFileName }}</label>
+    </div>
+  </div>
+
+  <button *ngIf="showButton" (click)="updateCurrentPicture()" [disabled]="!newPicture" type="button" class="btn btn-block btn-update waves-effect waves-light">
+        <i class="fa fa-save"></i>
+        Update Picture
+  </button>
+</div>
+

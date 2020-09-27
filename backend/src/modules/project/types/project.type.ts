@@ -17,19 +17,25 @@ export class ProjectType {
   description: string;
 
   @Field({
-    description: 'Url del Repositorio o referencia del Proyecto',
+    description: 'Project demo',
     nullable: true,
   })
-  urlProject: string;
+  urlDemo: string;
 
   @Field({
-    description: 'Imagen referente al Proyecto',
+    description: 'Project Repository source code',
+    nullable: true
+  })
+  urlRepository: string;
+
+  @Field({
+    description: 'Project reference image',
     nullable: true,
   })
   image: string;
 
   @Field({
-    description: 'Estado Actual del proyecto'
+    description: 'Current project status'
   })
   status : ProjectStatusEnum
 }

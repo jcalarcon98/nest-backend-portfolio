@@ -12,11 +12,9 @@ export class LoginService {
 
   private currentUser: User;
 
-  constructor(
-    private apollo: Apollo
-  ) {}
+  constructor(private apollo: Apollo) {}
 
-  login( authCredentialsInput: LoginForm ): any{
+  login(authCredentialsInput: LoginForm): any{
 
     return this.apollo.mutate({
       mutation: SIGN_IN,

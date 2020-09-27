@@ -24,6 +24,8 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { ToastComponent } from './toast/toast.component';
 import { ToastsContainer } from './toast/toast-container';
 import { CardComponent } from './card/card.component';
+import { ProjectModalComponent } from './modal/project-modal.component';
+import { UpladPictureComponent } from './uplad-picture/uplad-picture.component';
 
 
 @NgModule({
@@ -52,10 +54,14 @@ import { CardComponent } from './card/card.component';
     ToastComponent,
     ToastsContainer,
     CardComponent,
+    ProjectModalComponent,
+    UpladPictureComponent,
   ],
   exports: [
     RouterModule,
-    CardComponent
+    CardComponent,
+    ProjectModalComponent,
+    UpladPictureComponent
   ]
 })
 export class ComponentsModule {}

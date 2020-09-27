@@ -5,11 +5,12 @@ export class ProjectUtils{
 
   static getUpdatedProject(currentProject : Project, updateProjectInput : CreateOrUpdateProjectInput){
     
-    const { title, description, url, status} = updateProjectInput;
+    const { title, description, urlDemo, urlRepository, status} = updateProjectInput;
     
     currentProject.title = title;
     currentProject.description = description;
-    currentProject.urlProject = url;
+    currentProject.urlDemo = urlDemo;
+    currentProject.urlRepository = urlRepository;
     currentProject.status = status;
 
     return currentProject;

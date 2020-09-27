@@ -1,11 +1,14 @@
 <div class="main-container">
-  <button type="button" class="btn btn-sm add-button">
+  <button type="button" class="btn btn-sm add-button" (click)="createProject()">
     <i class="fa fa-plus"> New</i>
   </button>
 </div>
 
 <div class="card-container">
-    <app-card [description]='"Hola"'></app-card>
+    <app-card
+      [description]='"Hola"'
+      (editOperationOption)="editProject($event, 1)"
+      (deleteOperationOption)="deleteProject($event)"></app-card>
     <app-card></app-card>
     <app-card></app-card>
     <app-card></app-card>
@@ -14,6 +17,7 @@
     <app-card></app-card>
     <app-card></app-card>
 </div>
+
 
 
 

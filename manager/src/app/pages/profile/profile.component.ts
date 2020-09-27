@@ -11,21 +11,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+
   /**
    * Currently logged user
    */
   currentUser: User;
-
-  /**
-   * Image if user need to change Profile Picture
-   */
-  newProfilePicture: File;
-  tempImage: any;
-
-  /**
-   * @ignore
-   */
-  currentFileName = 'Select file';
 
   /**
    * @ignore
@@ -93,48 +83,36 @@ export class ProfileComponent {
   }
 
   /**
-   * Refresh the current user information after update.
+   * Update user profile picture.
    */
-  refreshCurrentUserData(){
-    this.currentUser = this.userService.currentUser;
-  }
+  updateUserImage(newProfilePicture: File) {
+    this.userService.updateUserImage(newProfilePicture, {idImage: this.currentUser.id}).subscribe(({errors, data}) => {
 
-  /**
-   * Change the image only for visualize purpose
-   * @param evt event executed when user select a new picture
-   */
-  onChange(evt) {
-
-    const { files, validity } = evt.target;
-
-    if (validity.valid) {
-
-      this.newProfilePicture = files.item(0);
-
-      if (this.newProfilePicture.type.indexOf('image') < 0) {
+      if (errors) {
         Swal.fire({
           title: 'Error!',
-          text: 'Please, select only images',
+          text: errors[0].message,
           icon: 'error',
           confirmButtonText: 'Retry'
         });
       }
 
-      const reader = new FileReader();
-      reader.readAsDataURL(this.newProfilePicture);
-      reader.onloadend = () => this.tempImage = reader.result;
-    }
-  }
+      Swal.fire({
+        title: 'Correct',
+        text: 'Updated Profile Information',
+        icon: 'success'
+      });
 
-  /**
-   * Update user profile picture.
-   */
-  updateImage() {
-    this.userService.updateUserImage(this.newProfilePicture, {idImage: this.currentUser.id}).subscribe(({errors, data}) => {
-      console.log('ojito', data, errors);
+      this.refreshCurrentUserData();
     });
   }
 
 
+  /**
+   * Refresh the current user information after update.
+   */
+  refreshCurrentUserData(){
+    this.currentUser = this.userService.currentUser;
+  }
 
 }

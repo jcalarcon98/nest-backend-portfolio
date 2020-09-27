@@ -31,7 +31,14 @@ export class Project extends BaseEntity {
     length: 200,
     nullable: true,
   })
-  urlProject: string;
+  urlDemo: string;
+
+  @Column({
+    type: 'varchar',
+    length: 200,
+    nullable: true
+  })
+  urlRepository: string;
 
   @Column({
     type: 'varchar',
