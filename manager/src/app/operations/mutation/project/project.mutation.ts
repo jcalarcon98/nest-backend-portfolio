@@ -1,10 +1,13 @@
 import gql from 'graphql-tag';
 
 export const CREATE_PROJECT = gql`
-  mutation createProject($createProjectInput:CreateOrUpdateProjectInput!) {
-    createProject(createProjectInput: $createProjectInput){
+  mutation createProject(
+    $picture: Upload,
+    $createProjectInput:CreateOrUpdateProjectInput!) {
+    createProject(picture: $picture, createProjectInput: $createProjectInput){
       title,
       description,
-      status
+      status,
+      image
     }
   }`;

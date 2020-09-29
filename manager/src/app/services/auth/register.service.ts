@@ -18,7 +18,6 @@ export class RegisterService {
 
     return this.apollo.mutate({
       mutation: SIGN_UP,
-      errorPolicy: 'all',
       variables: {
         createUserInput
       }

@@ -67,7 +67,7 @@ export class ProjectModalComponent{
 
       if (result.isConfirmed) {
 
-        this.projectService.createProject(this.projecForm.value).subscribe(({errors, data}) => {
+        this.projectService.createProject(this.projecForm.value, this.newProjectPicture).subscribe(({errors, data}) => {
 
           if (errors) {
             Swal.fire('Changes are not saved', '', 'info');

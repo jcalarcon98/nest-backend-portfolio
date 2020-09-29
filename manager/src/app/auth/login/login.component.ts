@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/auth/login.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { GraphQLError } from 'graphql';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent{
 
+  // TODO check if this variables helps something
   isFormSubmitted = false;
 
   loginForm = this.formBuilder.group({
@@ -32,20 +34,22 @@ export class LoginComponent{
 
     this.isFormSubmitted = true;
 
-    this.loginService.login(this.loginForm.value).subscribe(({errors, data}) => {
-
-      if (errors){
-        Swal.fire({
-          title: 'Error!',
-          text: errors[0].message,
-          icon: 'error',
-          confirmButtonText: 'Retry'
-        });
-
-        return;
-      }
+    this.loginService.login(this.loginForm.value).subscribe(() => {
 
       this.router.navigate(['dashboard']);
+
+    },
+    ({graphQLErrors}: {graphQLErrors: GraphQLError[]}) => {
+
+      const  [{message}] = graphQLErrors;
+
+      Swal.fire({
+        title: 'Error!',
+        html: message,
+        icon: 'error',
+        confirmButtonText: 'Retry'
+      });
+
     });
   }
 }

@@ -4,6 +4,7 @@ import { User } from '../../models/user.model';
 import { UserService } from '../../services/user/user.service';
 
 import Swal from 'sweetalert2';
+import { GraphQLError } from 'graphql';
 
 @Component({
   selector: 'app-profile',
@@ -58,20 +59,8 @@ export class ProfileComponent {
 
     const {email, ...updatedUser} = this.updateUserForm.value;
 
-    this.userService.updateUser(updatedUser).subscribe(({errors, data}) => {
+    this.userService.updateUser(updatedUser).subscribe(() => {
 
-      if (errors){
-        Swal.fire({
-          title: 'Error!',
-          text: errors[0].message,
-          icon: 'error',
-          confirmButtonText: 'Retry'
-        });
-
-        return;
-      }
-
-      // TODO improve this Swal.fire call.
       Swal.fire({
         title: 'Correct',
         text: 'Updated Profile Information',
@@ -79,23 +68,31 @@ export class ProfileComponent {
       });
 
       this.refreshCurrentUserData();
+    },
+    ({graphQLErrors}: {graphQLErrors: GraphQLError[]}) => {
+
+      let errors: string = 'The next errors happened:<br>';
+
+      graphQLErrors.forEach(({message}, index) => {
+        errors += `${index + 1}. ${message}<br>`;
+      });
+
+      Swal.fire({
+        title: 'Error!',
+        html: errors,
+        icon: 'error',
+        confirmButtonText: 'Retry'
+      });
+
     });
   }
 
   /**
    * Update user profile picture.
+   * @param newProfilePicture the new profile picture
    */
   updateUserImage(newProfilePicture: File) {
-    this.userService.updateUserImage(newProfilePicture, {idImage: this.currentUser.id}).subscribe(({errors, data}) => {
-
-      if (errors) {
-        Swal.fire({
-          title: 'Error!',
-          text: errors[0].message,
-          icon: 'error',
-          confirmButtonText: 'Retry'
-        });
-      }
+    this.userService.updateUserImage(newProfilePicture, {idImage: this.currentUser.id}).subscribe(() => {
 
       Swal.fire({
         title: 'Correct',
@@ -104,9 +101,24 @@ export class ProfileComponent {
       });
 
       this.refreshCurrentUserData();
+
+    },
+    ({graphQLErrors}: {graphQLErrors: GraphQLError[]}) => {
+
+      let errors: string = 'The next errors happened:<br>';
+
+      graphQLErrors.forEach(({message}, index) => {
+        errors += `${index + 1}. ${message}<br>`;
+      });
+
+      Swal.fire({
+        title: 'Error!',
+        html: errors,
+        icon: 'error',
+        confirmButtonText: 'Retry'
+      });
     });
   }
-
 
   /**
    * Refresh the current user information after update.

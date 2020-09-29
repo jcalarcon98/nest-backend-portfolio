@@ -18,7 +18,6 @@ export class LoginService {
 
     return this.apollo.mutate({
       mutation: SIGN_IN,
-      errorPolicy: 'all',
       variables: {
         authCredentialsInput
       }

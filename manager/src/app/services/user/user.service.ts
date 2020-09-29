@@ -22,9 +22,10 @@ export class UserService {
 
     const token = localStorage.getItem('token');
 
+    console.log(token, 'This is the token');
+
     return this.apollo.mutate({
       mutation: UPDATE_USER,
-      errorPolicy: 'all',
       variables: {
         updateUserInput
       },
@@ -57,7 +58,7 @@ export class UserService {
     );
   }
 
-  updateUserImage(picture, updateImageInput: UpdateImageForm): any{
+  updateUserImage(picture: File, updateImageInput: UpdateImageForm): any{
 
     const formData: FormData = new FormData();
 
@@ -67,7 +68,6 @@ export class UserService {
 
     return this.apollo.mutate({
       mutation: UPDATE_USER_IMAGE,
-      errorPolicy: 'all',
       variables: {
         picture,
         updateImageInput
