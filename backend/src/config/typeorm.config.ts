@@ -12,9 +12,7 @@ import { Social } from '../modules/social/social.entity';
 import { Phone } from '../modules/phone/phone.entity';
 
 const dbConfig = config.get('database');
-/**
- * Database configuration
- */
+
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: dbConfig.type,
   host: process.env.DATABASE_HOST || dbConfig.host,

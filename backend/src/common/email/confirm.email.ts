@@ -7,7 +7,8 @@ import { User } from '../../modules/user/user.entity';
 import { v4 } from 'uuid';
 import * as config from 'config';
 
-const hostConfig = process.env.JENIKA_HOST || config.get('host').name;
+const host = process.env.HOST || config.get('host').name;
+const prefix = process.env.REDIRECT_PREFIX || ''
 export class ConfirmEmail implements ISendEmailStrategy{
   
   name : string;
@@ -46,6 +47,8 @@ export class ConfirmEmail implements ISendEmailStrategy{
     
     await redis.set(id, this.id, "ex", 60*60*15);
 
-    return `${hostConfig}/api/user/confirm/${id}`
+    const completeHost = prefix !== '' ? `${host}/${prefix}` : host;
+
+    return `${completeHost}/user/confirm/${id}`
   } 
 }
