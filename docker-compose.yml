@@ -32,33 +32,6 @@ services:
       - EMAIL_CLIENT_SECRET=${EMAIL_CLIENT_SECRET}
       - EMAIL_REFRESH_TOKEN=${EMAIL_REFRESH_TOKEN}
       - EMAIL_ACCESS_TOKEN=${EMAIL_ACCESS_TOKEN}
-  frontend:
-    container_name: frontend
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-  manager:
-    container_name: manager
-    build:
-      context: ./manager
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./manager:/app
-      - /app/node_modules
     ports:
-      - "4300:4300"
-  nginx:
-    depends_on:
-      - backend
-      - frontend
-      - manager
-    container_name: nginx
-    restart: always
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile.dev
-    ports:
-      - "4000:80"
+      - "3000:3000"
+  
