@@ -23,7 +23,6 @@ services:
       - ./backend:/app
       - /app/node_modules
     environment: 
-      - NODE_ENV=${NODE_ENV}
       - EMAIL_HOST=${EMAIL_HOST}
       - EMAIL_PORT=${EMAIL_PORT}
       - AUTH_TYPE=${AUTH_TYPE}
