@@ -3,7 +3,7 @@ name: GraphQL portfolio deployment
 on:
   push:
     branches:
-      -master
+      - master
 
 jobs:
   deploy:
