@@ -1,102 +1,75 @@
-# Portfolio personal project.
+# Portfolio information Manager 
+> You can use this project to manage you portfolio information :wink: :heart:
 
-## Description
+<img alt="NestJS" src="https://img.shields.io/badge/nestjs%20-%23E0234E.svg?&style=for-the-badge&logo=nestjs&logoColor=white" />
 
-This project has the purpose of implementing different functionalities in order to give a person the possibility to manipulate important or relevant information about him, and then this information will be used to create his own personal portfolio.
+<img alt="GraphQL" src="https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql"/>
 
-The information that you can get, create, update and delete. 
+<img alt="Docker" src="https://img.shields.io/badge/docker%20-%230db7ed.svg?&style=for-the-badge&logo=docker&logoColor=white"/>
+
+<img alt="Postgres" src ="https://img.shields.io/badge/postgres-%23316192.svg?&style=for-the-badge&logo=postgresql&logoColor=white"/>
+
+Backend on NestJs with GraphQL (Code First Approach) for manage your personal information, this project allows execute CRUD operations in the next models:
 
 <img src="images/portfolio-entities.png" width="700">
 
-### Architecture
+To update each model, you need an account, use `signUp()` mutation to create one.
 
+After you can create an account, you will receive an email to verify your account, you should verify your email, otherwise you can't perform any operation.
 
-## Technologies
-This project has been built with the set of technologies: **Angular**, **NestJS**, **GraphQL**, **Postgres DB** all inside **Docker Containers** and also continuos integration (CI) with **Travis** to Deployment to a VPS with Docker.
+Project most relevant Features:
 
-### [Angular](https://angular.io/)
-<p>
-  <a href="https://angular.io/" target="blank"><img src="https://angular.io/assets/images/logos/angular/angular.svg" width="50" alt="Angular Logo"/></a>
-</p>
+- Send emails automatically.
+- Password recovery.
+- Upload Images.
+- JWT Authentication.
 
-The frontend application has been built with Angular. 
+You can see this project in production environment in the next URL:
 
-### [NestJs with GraphQL](https://docs.nestjs.com/graphql/quick-start)
-<p>
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="50" alt="Nest Logo" /></a>
-</p>
-
-The backend application has been built with Nest  and GraphQL with the approach **'code first'** described on Nest Documentation.
-
-### [Postgres DB](https://www.postgresql.org/)
-<p>
-  <a href="https://www.postgresql.org/" target="blank"><img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="50" alt="Postgres Logo" /></a>
-</p>
-
-The database used in this Project is Postgres, with the image on Docker hub ([Official postgres Image](https://hub.docker.com/_/postgres)). 
-
-We use default postgres database inside Postgres image:
-
-- **host** : postgres
-- **type** : postgres
-- **username** : postgres
-- **name** : postgres
-- **password** : postgres
-- **port** : 5432
-
-If you want to change this database, you have to go to this file inside backend folder:
-
-![Postgres Config](images/postgres-config.png)
-
-and set this credentials with your credentials:
-
-![Postgres Config](images/postgres-credentials.png)
-
-**Remember if you want to change this credentials you have to create the database inside Docker-container**.
-
-### [Docker](https://www.docker.com/)
-
-<p>
-  <a href="https://www.docker.com/" target="blank"><img src="https://www.docker.com/sites/default/files/d8/styles/medium/public/2020-01/Octopus_moby_800%20%281%29.png?itok=eGBT0Cog" width="70" alt="DOCKER Logo" /></a>
-</p>
-
-Frontend, Backend, Postgres DB and also Redis run inside Docker-Containers.
-
-## Installation
-
-The only thing that needs to be installed is **Docker** with **Docker Compose**.
-
-### Install Docker
-
-**Ways to install *Docker* on different operating systems**
-
-1. [Linux](https://docs.docker.com/engine/install/)
-2. [Mac](https://docs.docker.com/docker-for-mac/install/)
-3. [Windows](https://docs.docker.com/docker-for-windows/install/)
-
-After that you have to install **docker-compose**
-
-### Install Docker-compose
-
-**Ways to install *Docker-compose* on different operating systems**
-
-In this [LINK](https://docs.docker.com/compose/install/) you will find the different ways to install docker-compose.
+> https://jcalarcon.me/portfolio/graphql
 
 ## Usage
 
-Go to the main folder like this: 
+After run this project you should follow the next steps:
 
-![Source folder](images/source-folder.png)
+1. Create .env file in the source folder
+2. Add the next credentials to the .env file
+    - EMAIL_HOST=smtp.gmail.com
+    - EMAIL_PORT=465
+    - AUTH_TYPE=OAuth2
+    - EMAIL_ACCOUNT=username@gmail.com
+    - EMAIL_CLIENT_ID=
+    - EMAIL_CLIENT_SECRET=
+    - EMAIL_REFRESH_TOKEN=
+    - EMAIL_ACCESS_TOKEN=
 
-Here execute the next command:
+3. Generate `EMAIL_CLIENT_ID=`, `EMAIL_CLIENT_SECRET`, `EMAIL_REFRESH_TOKEN` and `EMAIL_ACCESS_TOKEN`, you can follow the next guide: 
+https://stackoverflow.com/questions/51933601/what-is-the-definitive-way-to-use-gmail-with-oauth-and-nodemailer
 
-`docker-compose up --build` and that's all, now you are running all this project inside **Docker containers**.
 
-## Contributing
+After that, you only have to execute:
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+```shell
+docker-compose up --build
+```
+## Author
 
-## License
+👤 **Jean Carlos Alarcón**
 
-[GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html)
+[![Twitter Follow](https://img.shields.io/twitter/follow/jcalarcon98?color=1DA1F2&label=Follow%20me%20on%20Twitter%21&logo=twitter&style=for-the-badge)](https://twitter.com/jcalarcon98)
 
+* Twitter: [@jcalarcon98](https://twitter.com/jcalarcon98)
+* Github: [@jcalarcon98](https://github.com/jcalarcon98)
+* LinkedIn: [@jcalarcon98](https://linkedin.com/in/jcalarcon98)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2021 [Jean Carlos Alarcón](https://github.com/jcalarcon98).
+
+This project is under [MIT](https://opensource.org/licenses/MIT) licensed.
+
+***
